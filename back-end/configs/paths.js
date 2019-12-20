@@ -7,5 +7,6 @@ module.exports = {
 	mainjs: path.resolve(__dirname, '../src/server.js'),
 	build: path.resolve(__dirname, '../build'),
 	src: path.resolve(__dirname, '../src'),
+	logFile: path.resolve(__dirname, '../log/access.log'),
 	config: path.resolve(__dirname)
 };

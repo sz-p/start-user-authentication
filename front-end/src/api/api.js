@@ -1,40 +1,40 @@
 import axios from 'axios';
 
-const baseURL = 'https://sz-p.cn/server/sz-pdemos/'
+const baseURL = 'http://localhost:4000/';
 
 export const base_Get_Rquest = async (url, params) => {
-    try {
-        const result = await axios.get(baseURL + url, { params: params })
-        return result.data;
-    } catch (err) {
-        return err;
-    }
-}
+	try {
+		const result = await axios.get(baseURL + url, params);
+		return result.data;
+	} catch (err) {
+		return err;
+	}
+};
+
+export const base_Post_Rquest = async (url, params) => {
+	try {
+		const result = await axios.post(baseURL + url, params);
+		return result.data;
+	} catch (err) {
+		return err;
+	}
+};
 
 /**
- * 获取所有分类
- * 
- * @param {any} success 
- * @param {any} error 
+ * 登录
+ *
+ * @param {any} success
+ * @param {any} error
  */
-export const getCategory = () => {
-    return base_Get_Rquest('getAllCategory.php', null);
+export const login_api = (data) => {
+	return base_Post_Rquest('login', data);
 };
 
 /**
  * 获取所有项目数据
- * 
- * @returns 
+ *
+ * @returns
  */
-export const getItem = () => {
-    return base_Get_Rquest('getAllItem.php', null);
+export const getLog_api = (data) => {
+	return base_Post_Rquest('getlog', data);
 };
-
-/**
- * 根据Demo名称获取详细信息
- * 
- * @returns 
- */
-export const get_RelaodIntroduction = (params) => {
-    return base_Get_Rquest('relaodIntroduction.php', params);
-}

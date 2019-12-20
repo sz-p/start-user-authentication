@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import IndexPage from './pages/index/index';
-import AboutPage from './pages/about/about';
+import ShowLogPage from './pages/showlog/showlog';
 
 import { hot } from 'react-hot-loader';
 
@@ -12,7 +12,7 @@ import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const createLocalStore = function() {
 	if (process.env.NODE_ENV === 'production') {
@@ -26,11 +26,12 @@ let store = createLocalStore();
 function App() {
 	return (
 		<Provider store={store}>
-			<BrowserRouter basename={window.location.pathname}>
-				<div id="container">
-					<Route path={'/about'} component={AboutPage} />
-					<Route exact path={'/'} component={IndexPage} />
-				</div>
+			<BrowserRouter>
+				<Switch>
+					<Route path={'/showlog'} component={ShowLogPage} />
+					<Route path={'/login'} component={IndexPage} />
+					<Route path={'/'} component={IndexPage} />
+				</Switch>
 			</BrowserRouter>
 		</Provider>
 	);

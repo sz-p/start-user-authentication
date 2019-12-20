@@ -1,3 +1,4 @@
-import helloworld from './helloworld/helloworld';
+import login from './login/login';
+import getLog from './get-log/get-log';
 
-export default [ helloworld ];
+export default [ login, getLog ];
